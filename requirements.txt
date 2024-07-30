@@ -1,17 +1,14 @@
-# Core
-django==4.2.9
-python-dotenv==1.0.1
-str2bool==1.1
-
-# UI
+asgiref==3.8.1
+dj-rest-auth==6.0.0
+Django==4.2.9
 django-admin-black==1.0.8
-
-# Deployment
-whitenoise==6.6.0
-gunicorn==21.2.0
-
-# psycopg2-binary
-# mysqlclient
-
-# Hot Reload
+django-allauth==0.63.6
 django-browser-reload==1.12.1
+djangorestframework==3.15.2
+gunicorn==21.2.0
+packaging==24.1
+python-dotenv==1.0.1
+sqlparse==0.5.1
+str2bool==1.1
+typing_extensions==4.12.2
+whitenoise==6.6.0

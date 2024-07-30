@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <ul>
+        {% if results %}
+            {% for result in results %}
+                <li>{{ result.name }}: {{ result.description }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No results found.</li>
+        {% endif %}
+    </ul>
+</body>
+</html>
