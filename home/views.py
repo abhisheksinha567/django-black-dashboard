@@ -24,3 +24,10 @@ def delete_item(request, pk):
     if request.method == 'DELETE':
         item.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET'])
+def search(request):
+    query = request.GET.get('q', '')
+    items = Item.objects.filter(name__icontains=query)
+    serializer = ItemSerializer(items, many=True)
+    return Response(serializer.data)

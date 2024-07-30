@@ -14,11 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import path, include
+from django_browser_reload import urls as browser_reload_urls
 
 urlpatterns = [
-    path('', include('home.urls')),
-    path("admin/", admin.site.urls),
-    path("", include('admin_black.urls')),
-    path("__reload__/", include("django_browser_reload.urls"))
+    path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),  # Include allauth URLs
+    path('api/auth/', include('dj_rest_auth.urls')),  # Include dj-rest-auth URLs
+    path('api/auth/registration/', include('dj_rest_auth.registration.urls')),  # Include registration URLs
+    path('', include('home.urls')),  # Your app's URLs
+    path("__reload__/", include(browser_reload_urls)),  # Include django_browser_reload URLs
 ]
+

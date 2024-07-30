@@ -36,6 +36,7 @@ DEBUG = str2bool(os.environ.get('DEBUG'))
 
 # Docker HOST
 ALLOWED_HOSTS = ['*']
+SITE_ID = 1
 
 # Add here your deployment HOSTS
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:5085', 'http://127.0.0.1:8000', 'http://127.0.0.1:5085']
@@ -43,11 +44,8 @@ CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:5085', 'http:
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:    
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
-# Application definition
-
 INSTALLED_APPS = [
-    'admin_black.apps.AdminBlackConfig',
+    'admin_black.apps.AdminBlackConfig',  # Ensure this appears only once
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -65,6 +63,7 @@ INSTALLED_APPS = [
     "home",
 ]
 
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -74,8 +73,11 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",  # Add this line
     "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
+
+
 
 ROOT_URLCONF = "core.urls"
 
